@@ -15,9 +15,9 @@ public class ScreenshotResponse {
 	private ResponseType responseType;
 	
 	/**
-	 * The error message. Will be 0 in case of successful response
+	 * The detailed response message
 	 */
-	private String errorMessage;
+	private String detailedMessage;
 
 	public String getImagePath() {
 		
@@ -39,13 +39,13 @@ public class ScreenshotResponse {
 		this.responseType = responseType;
 	}
 
-	public String getErrorMessage() {
+	public String getDetailedMessage() {
 		
-		return errorMessage;
+		return detailedMessage;
 	}
 
-	public void setErrorMessage(String errorMessage) {
+	public void setDetailedMessage(String detailedMessage) {
 		
-		this.errorMessage = errorMessage;
+		this.detailedMessage = detailedMessage;
 	}
 }

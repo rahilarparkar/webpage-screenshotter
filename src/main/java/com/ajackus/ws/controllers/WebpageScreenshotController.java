@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ajackus.ws.constants.ErrorConstants;
+import com.ajackus.ws.constants.ResponseType;
+import com.ajackus.ws.helper.WebpageScreenshotterHelper;
 import com.ajackus.ws.response.ScreenshotResponse;
 import com.ajackus.ws.services.WebpageScreenshotService;
 
@@ -20,12 +23,20 @@ public class WebpageScreenshotController {
 	
 	@RequestMapping(value = "**", method = RequestMethod.GET)
 	@ResponseBody
-	public ScreenshotResponse moduleStrings(HttpServletRequest request) {
+	public ScreenshotResponse getWebpageScreenshot(HttpServletRequest request) {
 		String requestString = request.getRequestURL().toString();
 	    String url = requestString.split("/url/")[1];
 	    
-	    ScreenshotResponse response = service.getScreenshot(url);
-	    return response;
-
+	    url = WebpageScreenshotterHelper.completeUrl(url);
+	    ScreenshotResponse response;
+	    if (WebpageScreenshotterHelper.validateUrl(url)) {
+	    	response = service.getScreenshot(url);
+	    	return response;
+	    } else {
+	    	response = new ScreenshotResponse();
+	    	response.setResponseType(ResponseType.FAILURE);
+	    	response.setDetailedMessage(WebpageScreenshotterHelper.getErrorMessage(ErrorConstants.E_URL_NOT_FOUND));
+	    	return response;
+	    }
 	}
 }
