@@ -47,7 +47,7 @@ public class WebpageScreenshotterHelper {
 	public static String completeUrl(String url) {
 		
 		String completeUrl = url;
-		if (!url.startsWith("https://") || !url.startsWith("http://")) {
+		if (!url.startsWith("https://") && !url.startsWith("http://")) {
 			completeUrl = "https://" + url;
 		}
 		return completeUrl;
