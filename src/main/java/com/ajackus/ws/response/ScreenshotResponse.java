@@ -2,6 +2,12 @@ package com.ajackus.ws.response;
 
 import com.ajackus.ws.constants.ResponseType;
 
+/**
+ * This class defines the response object for the screenshot request.
+ * 
+ * @author rahil
+ *
+ */
 public class ScreenshotResponse {
 	
 	/**

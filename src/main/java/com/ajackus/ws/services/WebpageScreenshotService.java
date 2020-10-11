@@ -1,12 +1,9 @@
 package com.ajackus.ws.services;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
@@ -59,7 +56,7 @@ public class WebpageScreenshotService {
 	        String urlOutputName = url.replace("https://", "").replace("http://", "");
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 	        String timestamp = LocalDateTime.now().format(formatter);
-	        String fileName = "./output/" + urlOutputName.substring(0, 10) + timestamp + ".png";
+	        String fileName = "./output/" + urlOutputName.substring(0, urlOutputName.length()>9?9:urlOutputName.length()-1) + timestamp + ".png";
 	        // Saving image to file
 	        ImageIO.write(myScreenshot.getImage(),"png",new File(fileName));
 	        // Building API response object

@@ -14,6 +14,13 @@ import com.ajackus.ws.helper.WebpageScreenshotHelper;
 import com.ajackus.ws.response.ScreenshotResponse;
 import com.ajackus.ws.services.WebpageScreenshotService;
 
+/**
+ * This is the main controller class for the REST API. Only the GET method
+ * for the screenshot request has been implemented.
+ * 
+ * @author raparkar
+ *
+ */
 @RestController
 @RequestMapping(path="/url")
 public class WebpageScreenshotController {
@@ -24,6 +31,7 @@ public class WebpageScreenshotController {
 	@RequestMapping(value = "**", method = RequestMethod.GET)
 	@ResponseBody
 	public ScreenshotResponse getWebpageScreenshot(HttpServletRequest request) {
+		
 		String requestString = request.getRequestURL().toString();
 	    String url = requestString.split("/url/")[1];
 	    

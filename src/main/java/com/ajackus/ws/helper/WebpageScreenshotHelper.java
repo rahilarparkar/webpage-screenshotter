@@ -6,6 +6,12 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * This class defines the helper methods needed in the project
+ * 
+ * @author rahil
+ *
+ */
 public class WebpageScreenshotHelper {
 
 	/**
@@ -44,6 +50,12 @@ public class WebpageScreenshotHelper {
 		return isValid;
 	}
 	
+	/**
+	 * This method adds "https://" to the url if it is not sent in the request
+	 * 
+	 * @param url
+	 * @return
+	 */
 	public static String completeUrl(String url) {
 		
 		String completeUrl = url;
