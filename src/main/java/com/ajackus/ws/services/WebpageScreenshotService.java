@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.ajackus.ws.constants.ErrorConstants;
 import com.ajackus.ws.constants.ResponseType;
-import com.ajackus.ws.helper.WebpageScreenshotterHelper;
+import com.ajackus.ws.helper.WebpageScreenshotHelper;
 import com.ajackus.ws.response.ScreenshotResponse;
 
 import ru.yandex.qatools.ashot.AShot;
@@ -66,12 +66,12 @@ public class WebpageScreenshotService {
 	        String filepath = System.getProperty("user.dir") + fileName.substring(1, fileName.length());
 	        response.setImagePath(filepath.replace("\\\\", "/").replace("\\", "/"));
 	        response.setResponseType(ResponseType.SUCCESS);
-	        response.setDetailedMessage(WebpageScreenshotterHelper.getErrorMessage(ErrorConstants.E_SUCCESS));
+	        response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_SUCCESS));
 	        // Closing chrome window
 	        driver.quit();
 		} catch (IOException e) {
 			response.setResponseType(ResponseType.FAILURE);
-			response.setDetailedMessage(WebpageScreenshotterHelper.getErrorMessage(ErrorConstants.E_WRITE_FAILED));
+			response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_WRITE_FAILED));
 		}
 		return response;
 	}

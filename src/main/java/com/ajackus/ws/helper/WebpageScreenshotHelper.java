@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class WebpageScreenshotterHelper {
+public class WebpageScreenshotHelper {
 
 	/**
 	 * This method fetches the detailed error message for the error code encountered

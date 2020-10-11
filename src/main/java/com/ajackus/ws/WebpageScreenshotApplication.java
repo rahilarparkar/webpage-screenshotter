@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebpageScreenshotterApplication {
+public class WebpageScreenshotApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebpageScreenshotterApplication.class, args);
+		SpringApplication.run(WebpageScreenshotApplication.class, args);
 	}
 }

@@ -20,10 +20,8 @@ public class ChromeDriverFactory {
 			return driverPath + "_linux";
 		} else if (os.contains("mac")) {
 			return driverPath + "_mac";
-		} else {
-			//TODO: handle exception
-			return null;
 		}
+		return null;
 	}
 
 }

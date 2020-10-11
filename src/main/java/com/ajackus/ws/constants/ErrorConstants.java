@@ -6,7 +6,5 @@ public class ErrorConstants {
 	
 	public static final String E_URL_NOT_FOUND = "E_URL_NOT_FOUND";
 	
-	public static final String E_CHROME_DRIVER_NOT_FOUND = "E_CHROME_DRIVER_NOT_FOUND";
-	
 	public static final String E_WRITE_FAILED = "E_WRITE_FAILED";
 }
