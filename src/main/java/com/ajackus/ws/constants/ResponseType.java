@@ -1,6 +1,7 @@
 package com.ajackus.ws.constants;
 
 public enum ResponseType {
+	
 	SUCCESS("Success"), FAILURE("Failure");
 	
 	String responseTypeDescription;
