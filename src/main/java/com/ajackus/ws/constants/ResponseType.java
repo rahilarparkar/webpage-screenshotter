@@ -7,6 +7,7 @@ public enum ResponseType {
 	String responseTypeDescription;
 	
 	private ResponseType(String desc) {
+		
 		responseTypeDescription = desc;
 	}
 	

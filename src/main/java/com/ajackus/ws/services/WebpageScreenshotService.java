@@ -44,28 +44,28 @@ public class WebpageScreenshotService {
 			// Fetch appropriate chrome driver based on OS
 			System.setProperty("webdriver.chrome.driver", ChromeDriverFactory.fetchChromeDriver());
 			// Chrome options to get screenshot at max resolution
-	        ChromeOptions opts = new ChromeOptions();
-	        opts.addArguments("start-maximized");
-	        opts.addArguments("disable-infobars");
-	        opts.addArguments("--disable-extensions");
-	        // Launch chrome with url and take screenshot
-	        WebDriver driver =  new ChromeDriver(opts);
-	        driver.get(url);
-	        Screenshot myScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
-	        // Removing http/https prefix and building filename with partial url and timestamp
-	        String urlOutputName = url.replace("https://", "").replace("http://", "");
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-	        String timestamp = LocalDateTime.now().format(formatter);
-	        String fileName = "./output/" + urlOutputName.substring(0, urlOutputName.length()>9?9:urlOutputName.length()-1) + timestamp + ".png";
-	        // Saving image to file
-	        ImageIO.write(myScreenshot.getImage(),"png",new File(fileName));
-	        // Building API response object
-	        String filepath = System.getProperty("user.dir") + fileName.substring(1, fileName.length());
-	        response.setImagePath(filepath.replace("\\\\", "/").replace("\\", "/"));
-	        response.setResponseType(ResponseType.SUCCESS);
-	        response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_SUCCESS));
-	        // Closing chrome window
-	        driver.quit();
+			ChromeOptions opts = new ChromeOptions();
+			opts.addArguments("start-maximized");
+			opts.addArguments("disable-infobars");
+			opts.addArguments("--disable-extensions");
+			// Launch chrome with url and take screenshot
+			WebDriver driver =  new ChromeDriver(opts);
+			driver.get(url);
+			Screenshot myScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
+			// Removing http/https prefix and building filename with partial url and timestamp
+			String urlOutputName = url.replace("https://", "").replace("http://", "");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+			String timestamp = LocalDateTime.now().format(formatter);
+			String fileName = "./output/" + urlOutputName.substring(0, urlOutputName.length()>9?9:urlOutputName.length()-1) + timestamp + ".png";
+			// Saving image to file
+			ImageIO.write(myScreenshot.getImage(),"png",new File(fileName));
+			// Building API response object
+			String filepath = System.getProperty("user.dir") + fileName.substring(1, fileName.length());
+			response.setImagePath(filepath.replace("\\\\", "/").replace("\\", "/"));
+			response.setResponseType(ResponseType.SUCCESS);
+			response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_SUCCESS));
+			// Closing chrome window
+			driver.quit();
 		} catch (IOException e) {
 			response.setResponseType(ResponseType.FAILURE);
 			response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_WRITE_FAILED));

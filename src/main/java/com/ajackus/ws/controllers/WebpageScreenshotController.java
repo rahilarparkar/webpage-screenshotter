@@ -18,7 +18,7 @@ import com.ajackus.ws.services.WebpageScreenshotService;
  * This is the main controller class for the REST API. Only the GET method
  * for the screenshot request has been implemented.
  * 
- * @author raparkar
+ * @author rahil
  *
  */
 @RestController
@@ -33,18 +33,18 @@ public class WebpageScreenshotController {
 	public ScreenshotResponse getWebpageScreenshot(HttpServletRequest request) {
 		
 		String requestString = request.getRequestURL().toString();
-	    String url = requestString.split("/url/")[1];
-	    
-	    url = WebpageScreenshotHelper.completeUrl(url);
-	    ScreenshotResponse response;
-	    if (WebpageScreenshotHelper.validateUrl(url)) {
-	    	response = service.getScreenshot(url);
-	    	return response;
-	    } else {
-	    	response = new ScreenshotResponse();
-	    	response.setResponseType(ResponseType.FAILURE);
-	    	response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_URL_NOT_FOUND));
-	    	return response;
-	    }
+		String url = requestString.split("/url/")[1];
+		
+		url = WebpageScreenshotHelper.completeUrl(url);
+		ScreenshotResponse response;
+		if (WebpageScreenshotHelper.validateUrl(url)) {
+			response = service.getScreenshot(url);
+			return response;
+		} else {
+			response = new ScreenshotResponse();
+			response.setResponseType(ResponseType.FAILURE);
+			response.setDetailedMessage(WebpageScreenshotHelper.getErrorMessage(ErrorConstants.E_URL_NOT_FOUND));
+			return response;
+		}
 	}
 }
